@@ -7,9 +7,15 @@
 
 # PROCESSING --------------------------------#
 # This code represents the logic or processing layer, under the Separation of Concerns principle
+try:
+    if __name__ == "__main__":
+        raise Exception("Please use the main.py file to start the program.")
+    else:
+        import json
+        import data_classes as data
+except Exception as e:
+    print(e.__str__())
 
-import json
-import data_classes as dc
 
 class FileProcessor:
     """
@@ -21,7 +27,7 @@ class FileProcessor:
     """
 
     @staticmethod
-    def read_employee_data_from_file(file_name: str, employee_data: list, employee_type: dc.Employee):
+    def read_employee_data_from_file(file_name: str, employee_data: list, employee_type: data.Employee):  ### employee_type: data.Employee
         """ This function reads data from a json file and loads it into a list of dictionary rows
 
         ChangeLog: (Who, When, What)
@@ -34,15 +40,10 @@ class FileProcessor:
         """
         try:
             with open(file_name, "r") as file:
-                ### Delete comment later
                 list_of_dictionary_data = json.load(file)  # the load function returns a list of dictionary rows.
-                #employee_data = json.load(file)  # the load function returns a list of dictionary rows.
-                ### DELETE commented line below later
                 for employee in list_of_dictionary_data:
-                ##for employee in employee_data:
-                    employee_object = employee_type
+                    employee_object = employee_type()
                     employee_object.first_name=employee["FirstName"]
-                    #employee_type.first_name = employee["FirstName"] #This didn't work either
                     employee_object.last_name=employee["LastName"]
                     employee_object.review_date=employee["ReviewDate"]
                     employee_object.review_rating=employee["ReviewRating"]
@@ -52,6 +53,8 @@ class FileProcessor:
         except Exception:
             raise Exception("There was a non-specific error!")
         return employee_data
+
+
 
     @staticmethod
     def write_employee_data_to_file(file_name: str, employee_data: list):
@@ -73,12 +76,11 @@ class FileProcessor:
                                        "ReviewDate": employee.review_date,
                                        "ReviewRating": employee.review_rating
                                        }
-                #list_of_dictionary_data.append(employee_json)
-                employee_data.append(employee_json)
+                list_of_dictionary_data.append(employee_json)
 
 
             with open(file_name, "w") as file:
-                json.dump(list_of_dictionary_data, file)
+                json.dump(list_of_dictionary_data, file, indent=2)
         except TypeError:
             raise TypeError("Please check that the data is a valid JSON format")
         except PermissionError:

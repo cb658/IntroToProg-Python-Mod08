@@ -8,12 +8,20 @@
 # Data -------------------------------------------- #
 # This code represents the data layer, under the Separation of Concerns principle
 
-import datetime
+try:
+    if __name__ == "__main__":
+        raise Exception("Please use the main.py file to start the program.")
+    else:
+       from datetime import datetime
+except Exception as e:
+    print(e.__str__())
+
+from datetime import date  ## Including this line as line in try: block isn't recognized
 
 FILE_NAME: str = 'EmployeeRatings.json'
 
 MENU: str = '''
----- Employee Ratings ------------------------------
+---- Employee Ratings ----------------------------
   Select from the following menu:
     1. Show current employee rating data.
     2. Enter new employee rating data.
@@ -83,7 +91,8 @@ class Employee(Person):
     """
 
     ### Note, starter code originally had review_date as a string and not datetime.date...
-    def __init__(self, first_name: str = "", last_name: str = "", review_date: datetime.date = "1900-01-01",
+    # //TODO: check if review_date should be a date.If so use review_date: datetime.date = "1900-01-01"
+    def __init__(self, first_name: str = "", last_name: str = "", review_date: str = "1900-01-01",
                  review_rating: int = 3):
 
         super().__init__(first_name=first_name, last_name=last_name)
@@ -113,6 +122,5 @@ class Employee(Person):
         else:
             raise ValueError("Please choose only values 1 through 5")
 
-#### SHOULD {self.__review_rating} be {self.review_rating} ???
     def __str__(self):
-        return f"{self.first_name},{self.last_name},{self.review_date},{self.__review_rating}"
+        return f"{self.first_name},{self.last_name},{self.__review_date},{self.__review_rating}"

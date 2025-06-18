@@ -1,1 +1,38 @@
-[{"FirstName": "John", "LastName": "Doe", "ReviewDate": "2030-01-01", "ReviewRating": 5}, {"FirstName": "Alice", "LastName": "Smith", "ReviewDate": "2030-01-01", "ReviewRating": 4}]
+[
+  {
+    "FirstName": "George",
+    "LastName": "Jetson",
+    "ReviewDate": "2009-01-01",
+    "ReviewRating": 4
+  },
+  {
+    "FirstName": "Fred",
+    "LastName": "Flintstone",
+    "ReviewDate": "1999-01-01",
+    "ReviewRating": 3
+  },
+  {
+    "FirstName": "Bugs",
+    "LastName": "Bunny",
+    "ReviewDate": "1999-01-01",
+    "ReviewRating": 5
+  },
+  {
+    "FirstName": "Spongebob",
+    "LastName": "Squarepants",
+    "ReviewDate": "2003-11-11",
+    "ReviewRating": 5
+  },
+  {
+    "FirstName": "Elmer",
+    "LastName": "Fudd",
+    "ReviewDate": "1992-01-01",
+    "ReviewRating": 2
+  },
+  {
+    "FirstName": "Tweety",
+    "LastName": "Bird",
+    "ReviewDate": "1999-01-01",
+    "ReviewRating": 3
+  }
+]

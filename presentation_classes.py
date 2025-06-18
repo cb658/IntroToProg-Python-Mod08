@@ -8,8 +8,14 @@
 # PRESENTATION ----------------------------------------------
 # This code represents the presentation layer, under the Separation of Concerns principle
 
-import data_classes as dc
-import processing_classes as proc
+try:
+    if __name__ == "__main__":
+        raise Exception("Please use the main.py file to start the program.")
+    #else:
+        #import data_classes as data
+        #import processing_classes as proc
+except Exception as e:
+    print(e.__str__())
 
 class IO:
     """
@@ -97,15 +103,16 @@ class IO:
             elif employee.review_rating == 2:
                 message = " {} {} is rated as 2 (Building)"
             elif employee.review_rating == 1:
-                message = " {} {} is rated as 1 (Not Meeting Expectations"
+                message = " {} {} is rated as 1 (Not Meeting Expectations)"
 
-            print(message.format(employee.first_name, employee.last_name, employee.review_date, employee.review_rating))
+            print(message.format(employee.first_name, employee.last_name,
+                                 employee.review_date, employee.review_rating))
         print("-" * 50)
         print()
 
 
     @staticmethod
-    def input_employee_data(employee_data: list, employee_type: dc.Employee):
+    def input_employee_data(employee_data: list, employee_type: object): ## had used employee_type: data.Employee
         """ This function gets the employee first name, last name, and the
             employee's review details from the user
 
@@ -118,10 +125,10 @@ class IO:
 
         :return: list
         """
-        # //TODO check whether the employee_type parameter should be object or something else?
+
         try:
             # Input the data
-            employee_object = employee_type
+            employee_object = employee_type()
             employee_object.first_name = input("What is the employee's first name? ")
             employee_object.last_name = input("What is the employee's last name? ")
             employee_object.review_date = input("What is their review date? ")
@@ -134,3 +141,4 @@ class IO:
             IO.output_error_messages("There was a non-specific error!", e)
 
         return employee_data
+
