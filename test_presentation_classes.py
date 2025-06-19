@@ -31,7 +31,6 @@ class TestIO(unittest.TestCase):
             self.assertEqual(self.employee_data[0].review_date, "2025-06-13")
             self.assertEqual(self.employee_data[0].review_rating, 5)
 
-    # //TODO update the code below to be review date and review rating
         # Simulate invalid GPA input (not a float)
         with patch('builtins.input', side_effect=['Alice', 'Smith', 'invalid', 10]):
             IO.input_employee_data(employee_data=self.employee_data, employee_type=Employee)

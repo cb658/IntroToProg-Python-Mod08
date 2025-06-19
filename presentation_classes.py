@@ -11,9 +11,6 @@
 try:
     if __name__ == "__main__":
         raise Exception("Please use the main.py file to start the program.")
-    #else:
-        #import data_classes as data
-        #import processing_classes as proc
 except Exception as e:
     print(e.__str__())
 
